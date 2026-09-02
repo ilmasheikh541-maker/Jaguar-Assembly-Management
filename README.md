@@ -12,4 +12,3 @@ A basic C++ project designed for Jaguar manufacturing plant operations, tracking
 | **04** | **Zoya** | Main Menu & User Interface (`switch-case`) | `main.cpp` |
 
 ---
-*B.Sc. (Hons) Computer Science — 2nd Year C++ Project*
