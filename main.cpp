@@ -1,53 +1,28 @@
 #include <iostream>
-#include "car.h"
 #include "inventory.h"
-#include "database.h"
-
+#include "car.h"
 using namespace std;
 
 int main() {
-    Car jaguar(101, "Jaguar F-Pace");
-    Inventory engine("V8 Engine", 8);
-    DatabaseManager db;
+    cout << "========================================" << endl;
+    cout << "   WELCOME TO JAGUAR SHOWROOM SYSTEM    " << endl;
+    cout << "========================================" << endl;
 
-    int choice;
-    do {
-        cout << "\n==========================================";
-        cout << "\n  JAGUAR ASSEMBLY & INVENTORY SYSTEM";
-        cout << "\n==========================================";
-        cout << "\n1. View Car Status";
-        cout << "\n2. Advance Car Assembly Stage";
-        cout << "\n3. View Inventory Status";
-        cout << "\n4. Consume Engine Stock";
-        cout << "\n5. Save All Data to Database File";
-        cout << "\n6. Exit System";
-        cout << "\nEnter Choice: ";
-        cin >> choice;
+    Inventory shopInventory; // Rida ki inventory call hui
+    Car myJaguar;           // Aapki car class call hui
 
-        switch (choice) {
-            case 1:
-                jaguar.displayCar();
-                break;
-            case 2:
-                jaguar.advanceStage();
-                break;
-            case 3:
-                engine.displayItem();
-                break;
-            case 4:
-                engine.consumeStock(2);
-                break;
-            case 5:
-                db.saveCarLog(jaguar);
-                db.saveInventoryLog(engine);
-                break;
-            case 6:
-                cout << "\nExiting Jaguar System. Good Luck!\n";
-                break;
-            default:
-                cout << "\nInvalid choice! Try again.\n";
-        }
-    } while (choice != 6);
+    // 1. Show available parts
+    shopInventory.showStock();
 
+    // 2. Select Car Color
+    myJaguar.selectColor();
+
+    // 3. Build Car & Deduct Parts
+    myJaguar.buildCar(shopInventory);
+
+    // 4. Show Final Details
+    myJaguar.displayCarDetails();
+
+    cout << "\nThank you for using Jaguar System!" << endl;
     return 0;
 }
