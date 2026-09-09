@@ -1,49 +1,38 @@
 #ifndef INVENTORY_H
 #define INVENTORY_H
-
 #include <iostream>
-#include <string>
-
 using namespace std;
 
 class Inventory {
-private:
-    string itemName;
-    int quantity;
-
 public:
+    int engines;
+    int tires;
+    int chassis;
+
+    // Default Stock
     Inventory() {
-        itemName = "";
-        quantity = 0;
+        engines = 10;
+        tires = 40;
+        chassis = 10;
     }
 
-    Inventory(string name, int qty) {
-        itemName = name;
-        quantity = qty;
+    void showStock() {
+        cout << "\n=== JAGUAR SPARE PARTS INVENTORY ===" << endl;
+        cout << "1. Engines Available: " << engines << endl;
+        cout << "2. Tires Available: " << tires << endl;
+        cout << "3. Chassis Available: " << chassis << endl;
+        cout << "====================================" << endl;
     }
 
-    string getItemName() const { return itemName; }
-    int getQuantity() const { return quantity; }
-
-    void addStock(int qty) {
-        quantity += qty;
-        cout << "\n[SUCCESS] Added " << qty << " units to " << itemName << ".\n";
-    }
-
-    void consumeStock(int qty) {
-        if (qty <= quantity) {
-            quantity -= qty;
-            cout << "\n[SUCCESS] Used " << qty << " units of " << itemName << ".\n";
-            if (quantity < 5) {
-                cout << "[CRITICAL WARNING] Low Stock Alert for " << itemName << "! Remaining: " << quantity << "\n";
-            }
+    void usePartsForCar() {
+        if(engines > 0 && tires >= 4 && chassis > 0) {
+            engines -= 1;
+            tires -= 4;
+            chassis -= 1;
+            cout << "Parts used for 1 Jaguar successfully!" << endl;
         } else {
-            cout << "\n[ERROR] Not enough stock available for " << itemName << "!\n";
+            cout << "Low Stock! Cannot build car." << endl;
         }
-    }
-
-    void displayItem() const {
-        cout << "Item: " << itemName << " | Quantity Available: " << quantity << endl;
     }
 };
 
