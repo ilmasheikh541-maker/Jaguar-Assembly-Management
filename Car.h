@@ -1,63 +1,48 @@
 #ifndef CAR_H
 #define CAR_H
-
 #include <iostream>
 #include <string>
-
+#include "inventory.h"
 using namespace std;
 
 class Car {
-private:
-    int carID;
-    string modelName;
-    string assemblyStage; // 1. Chassis, 2. Paint, 3. Engine, 4. Quality Check
-
 public:
+    string modelName;
+    string color;
+    double price;
+
     Car() {
-        carID = 0;
-        modelName = "";
-        assemblyStage = "Chassis Frame";
+        modelName = "Jaguar F-Pace";
+        price = 7500000.0; // Base Price
+        color = "Black";
     }
 
-    Car(int id, string model) {
-        carID = id;
-        modelName = model;
-        assemblyStage = "Chassis Frame";
+    void selectColor() {
+        int choice;
+        cout << "\n--- SELECT YOUR JAGUAR COLOR ---" << endl;
+        cout << "1. Fuji White" << endl;
+        cout << "2. Santorini Black" << endl;
+        cout << "3. Firenze Red" << endl;
+        cout << "Enter color choice (1-3): ";
+        cin >> choice;
+
+        if (choice == 1) color = "Fuji White";
+        else if (choice == 2) color = "Santorini Black";
+        else if (choice == 3) color = "Firenze Red";
+        else cout << "Invalid choice! Defaulting to Santorini Black." << endl;
     }
 
-    int getCarID() const {
-        return carID;
+    void buildCar(Inventory &inv) {
+        cout << "\nChecking inventory for " << modelName << "..." << endl;
+        inv.usePartsForCar(); // Rida ki inventory se parts deduct honge
     }
 
-    string getModelName() const {
-        return modelName;
-    }
-
-    string getAssemblyStage() const {
-        return assemblyStage;
-    }
-
-    // Assembly stage Update logic
-    void advanceStage() {
-        if (assemblyStage == "Chassis Frame") {
-            assemblyStage = "Paint Job";
-            cout << "\n[SUCCESS] Car ID " << carID << " moved to Paint Job Stage.\n";
-        } else if (assemblyStage == "Paint Job") {
-            assemblyStage = "Engine Fitting";
-            cout << "\n[SUCCESS] Car ID " << carID << " moved to Engine Fitting Stage.\n";
-        } else if (assemblyStage == "Engine Fitting") {
-            assemblyStage = "Quality Check";
-            cout << "\n[SUCCESS] Car ID " << carID << " moved to Final Quality Check.\n";
-        } else {
-            cout << "\n[INFO] Car ID " << carID << " is already Fully Assembled!\n";
-        }
-    }
-
-    // Car Details Display Function
-    void displayCar() const {
-        cout << "Car ID: " << carID 
-             << " | Model: " << modelName 
-             << " | Current Stage: " << assemblyStage << endl;
+    void displayCarDetails() {
+        cout << "\n=== CAR SPECIFICATIONS ===" << endl;
+        cout << "Model: " << modelName << endl;
+        cout << "Color: " << color << endl;
+        cout << "Price: Rs. " << price << endl;
+        cout << "==========================" << endl;
     }
 };
 
