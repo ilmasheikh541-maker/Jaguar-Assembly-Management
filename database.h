@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <fstream>
-#include <string>
 #include "car.h"
 #include "inventory.h"
 
@@ -12,11 +11,9 @@ using namespace std;
 class DatabaseManager {
 public:
     void saveCarLog(const Car& car) {
-        ofstream outFile("cars_log.txt", ios::app);
+        ofstream outFile("car_log.txt", ios::app);
         if (outFile.is_open()) {
-            outFile << "ID: " << car.getCarID() 
-                    << " | Model: " << car.getModelName() 
-                    << " | Stage: " << car.getAssemblyStage() << endl;
+            outFile << "Car Log Saved\n";
             outFile.close();
             cout << "\n[DATABASE] Car log successfully saved to disk.\n";
         } else {
@@ -27,12 +24,11 @@ public:
     void saveInventoryLog(const Inventory& item) {
         ofstream outFile("inventory_log.txt", ios::app);
         if (outFile.is_open()) {
-            outFile << "Item: " << item.getItemName() 
-                    << " | Quantity: " << item.getQuantity() << endl;
+            outFile << "Item Saved\n";
             outFile.close();
             cout << "[DATABASE] Inventory log successfully saved to disk.\n";
         } else {
-            cout << "[ERROR] Unable to open database file!\n";
+            cout << "[ERROR] Unable to open inventory database file!\n";
         }
     }
 };
