@@ -10,7 +10,7 @@ int main() {
     cout << "   JAGUAR ASSEMBLY MANAGEMENT    \n";
     cout << "==================================\n\n";
 
-    // 1. Inventory & Car call 
+    // 1. Inventory & Car call
     Inventory shopInventory;
     Car myJaguar;
 
