@@ -8,8 +8,8 @@ int main() {
     cout << "   WELCOME TO JAGUAR SHOWROOM SYSTEM    " << endl;
     cout << "========================================" << endl;
 
-    Inventory shopInventory; // Rida ki inventory call hui
-    Car myJaguar;           // Aapki car class call hui
+    Inventory shopInventory;
+    Car myJaguar;          
 
     // 1. Show available parts
     shopInventory.showStock();
