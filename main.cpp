@@ -1,28 +1,27 @@
 #include <iostream>
+#include "Car.h"
 #include "inventory.h"
-#include "car.h"
+#include "database.h"
+
 using namespace std;
 
 int main() {
-    cout << "========================================" << endl;
-    cout << "   WELCOME TO JAGUAR SHOWROOM SYSTEM    " << endl;
-    cout << "========================================" << endl;
+    cout << "==================================\n";
+    cout << "   JAGUAR ASSEMBLY MANAGEMENT    \n";
+    cout << "==================================\n\n";
 
+    // 1. Inventory & Car call 
     Inventory shopInventory;
-    Car myJaguar;          
+    Car myJaguar;
 
-    // 1. Show available parts
+    // 2. Show stock and select color
     shopInventory.showStock();
-
-    // 2. Select Car Color
     myJaguar.selectColor();
 
-    // 3. Build Car & Deduct Parts
+    // 3. Build Car & Database Log
     myJaguar.buildCar(shopInventory);
-
-    // 4. Show Final Details
     myJaguar.displayCarDetails();
 
-    cout << "\nThank you for using Jaguar System!" << endl;
+    cout << "\n[SUCCESS] Jaguar Assembly Completed Successfully!\n";
     return 0;
 }
